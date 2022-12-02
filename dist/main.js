@@ -1,0 +1,1 @@
+!async function(){let t=await async function(t){try{let t=await fetch("https://api.openweathermap.org/data/2.5/weather?q=london&APPID=67556afc5b803ebc6540b49ddb13c6a3&units=metric"),e=await t.json();return console.log(e),e}catch(t){throw new Error(`Wasn't possible to fetch data from API. ${t}`)}}();document.querySelector("#weather-temperature").textContent=`${t.main.temp}°C`}();
