@@ -1,0 +1,82 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+body{
+    padding: 0 8rem ;
+}
+
+#weather-app-image{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 85vh;
+
+    background-image: url(../src/img/raining_sky.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    background-color: black;
+}
+#weather-tip{
+    color: white;
+}
+#weather-display{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    align-self: flex-end;
+    margin: 3rem;
+}
+#weather-city{
+    line-height: 0;
+}
+#weather-status-display{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+#weather-temperature, #weather-city, #weather-status, #updated-dialog{
+    color: white;
+}
+#weather-status{
+    font-size: 1.4rem;
+}
+#weather-temperature{
+    font-size: 4rem;
+    font-weight: bold;
+}
+#updated-dialog{
+    font-size: 0.7rem;
+    line-height: 0;
+}
+#weather-app-navigator{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: rgb(55, 55, 55);
+    height: 5vh;
+}
+#weather-app-navigator > ul{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+#settings-button{
+    background-color: white;
+    outline: none;
+    border: none;
+}
