@@ -32,9 +32,9 @@ body{
     align-items: center;
 
     width: 100%;
-    height: 85vh;
+    height: 90vh;
 
-    background-image: url(../src/img/clear_sky.jpg);
+    background-image: url(../src/img/clear.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -75,15 +75,12 @@ body{
     font-size: 4rem;
     font-weight: bold;
 }
-#updated-dialog{
-    font-size: 0.7rem;
-    line-height: 0;
-}
 #weather-app-navigator{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 1rem;
+    border-bottom: 1px solid grey ;
 }
 #weather-app-navigator > ul{
     display: flex;
