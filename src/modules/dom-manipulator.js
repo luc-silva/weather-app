@@ -2,7 +2,7 @@ let weatherAppDomManipulator = (function () {
 	let createDivElement = () => document.createElement("div");
 	let createBtnElement = () => document.createElement("button");
 	let createInptElement = () => document.createElement(`input`);
-    let createStrongElement = () => document.createElement("strong")
+	let createStrongElement = () => document.createElement("strong");
 
 	let createSearchContainer = function () {
 		let mainContainer = createDivElement();
@@ -18,17 +18,14 @@ let weatherAppDomManipulator = (function () {
 		searchBtn.textContent = "Search";
 		searchContainer.append(searchInpt, searchBtn);
 
-        //
-        let clockContainer = createDivElement()
-        let hours = createStrongElement()
-        hours.id = "weather-clock"
+		//
+		let clockContainer = createDivElement();
+		let hours = createStrongElement();
+		hours.id = "weather-clock";
 
+		clockContainer.append(hours);
 
-        let timeout = setInterval(updateClock, 1000);
-
-        clockContainer.append(hours)
-
-    	mainContainer.append(searchContainer, clockContainer);
+		mainContainer.append(searchContainer, clockContainer);
 		return mainContainer;
 	};
 
@@ -38,16 +35,26 @@ let weatherAppDomManipulator = (function () {
 		return container;
 	};
 
-	return { createSearchContainer };
+	let updateClock = (function () {
+		setInterval(getTime, 3000);
+	})();
+
+	let changeBackground = function (newImage) {
+		let image = document.querySelector("#weather-app-image");
+		image.style.backgroundImage = `url(${newImage})`;
+	};
+
+	return { createSearchContainer, changeBackground };
 })();
 
-let updateClock = function(){
-    let clock = document.querySelector("#weather-clock")
-    let time = new Date()
-    let hours = time.getHours()
-    let minutes = time.getMinutes()
+function getTime() {
+	let time = new Date();
+	let hours = time.getHours();
+	let minutes = time.getMinutes();
+	let clock = document.querySelector("#weather-clock");
 
-    clock.textContent = `${hours}:${minutes}`
+	console.log(`${hours}:${minutes}`);
+	clock.textContent = `${hours}:${minutes}`;
 }
 
 let createWeatherPanel = function () {
@@ -60,4 +67,4 @@ let createWeatherPanel = function () {
 	screen.append(searchContainer);
 };
 
-export default createWeatherPanel;
+export { createWeatherPanel, weatherAppDomManipulator };

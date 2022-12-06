@@ -1,9 +1,11 @@
-import createWeatherPanel from "./modules/dom-manipulator.js"
+import {
+	createWeatherPanel,
+	weatherAppDomManipulator,
+} from "./modules/dom-manipulator.js";
 
 let settings = (function () {
 	let temperatureUnit = "metric";
-	let local = "ko-KR"
-	let city = "Sao Paulo";
+	let city = "London";
 
 	return { temperatureUnit, city };
 })();
@@ -36,10 +38,24 @@ let weatherApp = (async function () {
 	let checkWeatherCondition = function () {
 		let weatherStatus = document.querySelector("#weather-status");
 		let status = weatherData.weather[0].description;
-
 		status = upperize(status);
-
 		weatherStatus.textContent = `${status}`;
+
+		console.log(weatherData.weather[0].main);
+
+		switch (weatherData.weather[0].main) {
+			case "Rain":
+				weatherAppDomManipulator.changeBackground(
+					"../src/img/raining.jpg"
+				);
+				break;
+
+			default:
+				weatherAppDomManipulator.changeBackground(
+					"../src/img/clear.jpg"
+				);
+				break;
+		}
 	};
 
 	let checkCity = function () {
@@ -47,13 +63,15 @@ let weatherApp = (async function () {
 		weatherCity.textContent = weatherData.name;
 	};
 
-	let settingsBtn = document.querySelector("#settings-button")
+	//panel buttons
+	let settingsBtn = document.querySelector("#settings-button");
 
-	let weatherBtn = document.querySelector("#weather-tab-btn")
-	weatherBtn.addEventListener("click", createWeatherPanel)
+	let weatherBtn = document.querySelector("#weather-tab-btn");
+	weatherBtn.addEventListener("click", createWeatherPanel);
 
 	weatherTemperature.addEventListener("click", showTemperature);
 	showTemperature();
+	updateClock();
 })();
 
 async function getData(city = "London", unit = "metric") {
