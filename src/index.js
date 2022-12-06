@@ -1,5 +1,8 @@
+import createWeatherPanel from "./modules/dom-manipulator.js"
+
 let settings = (function () {
 	let temperatureUnit = "metric";
+	let local = "ko-KR"
 	let city = "Sao Paulo";
 
 	return { temperatureUnit, city };
@@ -43,6 +46,11 @@ let weatherApp = (async function () {
 		let weatherCity = document.querySelector("#weather-city");
 		weatherCity.textContent = weatherData.name;
 	};
+
+	let settingsBtn = document.querySelector("#settings-button")
+
+	let weatherBtn = document.querySelector("#weather-tab-btn")
+	weatherBtn.addEventListener("click", createWeatherPanel)
 
 	weatherTemperature.addEventListener("click", showTemperature);
 	showTemperature();
