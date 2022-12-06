@@ -1,3 +1,4 @@
+import getData from "./modules/fetch.js"
 import {
 	createWeatherPanel,
 	weatherAppDomManipulator,
@@ -12,7 +13,6 @@ let settings = (function () {
 
 let weatherApp = (async function () {
 	let weatherTemperature = document.querySelector("#weather-temperature");
-
 	let weatherData = await getData();
 
 	let showTemperature = async function () {
@@ -40,8 +40,6 @@ let weatherApp = (async function () {
 		let status = weatherData.weather[0].description;
 		status = upperize(status);
 		weatherStatus.textContent = `${status}`;
-
-		console.log(weatherData.weather[0].main);
 
 		switch (weatherData.weather[0].main) {
 			case "Rain":
@@ -91,25 +89,11 @@ let weatherApp = (async function () {
 	let settingsBtn = document.querySelector("#settings-button");
 
 	let weatherBtn = document.querySelector("#weather-tab-btn");
-	weatherBtn.addEventListener("click", createWeatherPanel);
+	weatherBtn.addEventListener("click",createWeatherPanel);
 
 	weatherTemperature.addEventListener("click", showTemperature);
 	showTemperature();
-	updateClock();
 })();
-
-async function getData(city = "London", unit = "metric") {
-	try {
-		let response = await fetch(
-			`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=67556afc5b803ebc6540b49ddb13c6a3&units=${unit}`
-		);
-		let data = await response.json();
-		console.log(data);
-		return data;
-	} catch (error) {
-		throw new Error(`Wasn't possible to fetch data from API. ${error}`);
-	}
-}
 
 let upperize = (status) => {
 	status = status.split(" ");
@@ -123,6 +107,3 @@ let upperize = (status) => {
 	newStatus = newStatus.join(" ");
 	return newStatus;
 };
-``;
-
-export default settings;

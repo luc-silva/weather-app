@@ -1,3 +1,5 @@
+import getData from "./fetch.js";
+
 let weatherAppDomManipulator = (function () {
 	let createDivElement = () => document.createElement("div");
 	let createBtnElement = () => document.createElement("button");
@@ -19,9 +21,10 @@ let weatherAppDomManipulator = (function () {
 		searchContainer.append(searchInpt, searchBtn);
 
 		//
-		let clockContainer = createDivElement();
 		let hours = createStrongElement();
 		hours.id = "weather-clock";
+
+		let clockContainer = createDivElement();
 
 		clockContainer.append(hours);
 
@@ -31,43 +34,90 @@ let weatherAppDomManipulator = (function () {
 
 	let createWeatherCardContainer = function () {
 		let container = createDivElement();
+		container.id = "weather-card-container";
 
 		return container;
 	};
 
-	let updateClock = (function () {
+	let createWeatherCard = function (data) {
+		let card = createDivElement();
+		card.classList.add("weather-card");
+		card.innerHTML = `
+        <span class="weather-card-city">${data.name}, ${data.sys.country}</span>
+        <div class="weather-card-status-container">
+            <div class="weather-card-status">
+                <span>${Math.round(data.main.temp)}°C</span> /
+                <span>${Math.round(data.main.temp * 1.8 + 32)}°F</span>
+            </div>
+            <div class="weather-card-condition">
+                ${data.weather[0].description}
+                <img src="http://openweathermap.org/img/wn/${
+					data.weather[0].icon
+				}@2x.png"></img>
+            </div>
+        </div>`;
+
+		return card;
+	};
+
+	let updateClock = function () {
 		setInterval(getTime, 3000);
-	})();
+	};
 
 	let changeBackground = function (newImage) {
 		let image = document.querySelector("#weather-app-image");
 		image.style.backgroundImage = `url(${newImage})`;
 	};
 
-	return { createSearchContainer, changeBackground };
+	return {
+		createSearchContainer,
+		changeBackground,
+		updateClock,
+		createWeatherCardContainer,
+		createWeatherCard,
+	};
 })();
 
 function getTime() {
 	let time = new Date();
 	let hours = time.getHours();
 	let minutes = time.getMinutes();
-    if (minutes < 10){
-        minutes = `0`+ minutes
-    }
+	if (minutes < 10) {
+		minutes = `0` + minutes;
+	}
 	let clock = document.querySelector("#weather-clock");
 
-	console.log(`${hours}:${minutes}`);
 	clock.textContent = `${hours}:${minutes}`;
 }
 
-let createWeatherPanel = function () {
+let createWeatherPanel = async function () {
 	let screen = document.querySelector("#main-container");
 	screen.textContent = "";
 
 	let searchContainer = weatherAppDomManipulator.createSearchContainer();
-	//let weatherCardContainer = createWeatherCardContainer();
+	let weatherCardContainer =
+		weatherAppDomManipulator.createWeatherCardContainer();
 
-	screen.append(searchContainer);
+	screen.append(searchContainer, weatherCardContainer);
+
+	weatherAppDomManipulator.updateClock();
+
+	let cities = [
+		"London",
+		"Brasilia",
+		"Washington",
+		"Berlin",
+		"Moscow",
+		"Tokyo",
+		"Mexico City",
+	];
+	for (let counter = 0; counter < cities.length; counter++) {
+		let data = await getData(cities[counter]);
+
+		let card = weatherAppDomManipulator.createWeatherCard(data);
+
+		document.querySelector("#weather-card-container").append(card);
+	}
 };
 
 export { createWeatherPanel, weatherAppDomManipulator };
