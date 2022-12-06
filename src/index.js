@@ -50,6 +50,30 @@ let weatherApp = (async function () {
 				);
 				break;
 
+			case "Thunderstorm":
+				weatherAppDomManipulator.changeBackground(
+					"../src/img/thunderstorm.jpg"
+				);
+				break;
+
+			case "Clouds":
+				weatherAppDomManipulator.changeBackground(
+					"../src/img/cloudy.jpg"
+				);
+				break;
+
+			case "Snow":
+				weatherAppDomManipulator.changeBackground(
+					"../src/img/snow.jpg"
+				);
+				break;
+
+			case "Drizzle":
+				weatherAppDomManipulator.changeBackground(
+					"../src/img/drizzle.jpg"
+				);
+				break;
+
 			default:
 				weatherAppDomManipulator.changeBackground(
 					"../src/img/clear.jpg"
