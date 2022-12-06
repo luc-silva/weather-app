@@ -27,6 +27,7 @@ let weatherApp = (async function () {
 			weatherTemperature.textContent = `${weatherData.main.temp}°C`;
 		}
 		checkWeatherCondition();
+		checkCity();
 	};
 
 	let checkWeatherCondition = function () {
@@ -38,17 +39,9 @@ let weatherApp = (async function () {
 		weatherStatus.textContent = `${status}`;
 	};
 
-	let upperize = (status) => {
-		status = status.split(" ");
-		let newStatus = [];
-		status.forEach((word) => {
-			word = word.split("");
-			word[0] = word[0].toUpperCase();
-			word = word.join("");
-			newStatus.push(word);
-		});
-		newStatus = newStatus.join(" ");
-		return newStatus;
+	let checkCity = function () {
+		let weatherCity = document.querySelector("#weather-city");
+		weatherCity.textContent = weatherData.name;
 	};
 
 	weatherTemperature.addEventListener("click", showTemperature);
@@ -67,5 +60,19 @@ async function getData(city = "London", unit = "metric") {
 		throw new Error(`Wasn't possible to fetch data from API. ${error}`);
 	}
 }
+
+let upperize = (status) => {
+	status = status.split(" ");
+	let newStatus = [];
+	status.forEach((word) => {
+		word = word.split("");
+		word[0] = word[0].toUpperCase();
+		word = word.join("");
+		newStatus.push(word);
+	});
+	newStatus = newStatus.join(" ");
+	return newStatus;
+};
+``;
 
 export default settings;
