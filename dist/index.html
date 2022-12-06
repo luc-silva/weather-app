@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Weather App</title>
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,6 +17,7 @@
             </div>
         </span>
     </div>
+
     <nav id="weather-app-navigator">
         <ul>
             <li id="weather-tab-btn">Weather</li>
@@ -25,5 +26,30 @@
         </ul>
         <button id="settings-button">Settings</button>
     </nav>
+
+    <div id="main-container">
+        <div id="clock-search-container">
+            <div id="search-container">
+                <input type="text" placeholder="Type a city">
+                <button>Search</button>
+            </div>
+
+            <div>
+                <strong id="weather-clock">10:44 AM</strong>
+            </div>
+        </div>
+
+        <div id="weather-cards-container">
+            <div class="weather-card">
+                <span class="weather-card-city">London</span>
+                <div class="weather-card-status-container">
+                    <span>13°C</span>
+                    <span>13°F</span>
+                    <span>icon</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
