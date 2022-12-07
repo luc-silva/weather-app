@@ -1,16 +1,9 @@
-import getData from "./modules/fetch.js";
+import { getData, settings } from "./modules/fetch.js";
 import {
 	createWeatherPanel,
 	createSettingsPanel,
 	weatherAppDomManipulator,
 } from "./modules/dom-manipulator.js";
-
-let settings = (function () {
-	let temperatureUnit = "metric";
-	let city = "London";
-
-	return { temperatureUnit, city };
-})();
 
 let weatherApp = (async function () {
 	let weatherTemperature = document.querySelector("#weather-temperature");

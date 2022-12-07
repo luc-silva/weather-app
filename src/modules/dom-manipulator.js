@@ -1,4 +1,4 @@
-import getData from "./fetch.js";
+import { getData } from "./fetch.js";
 
 let weatherAppDomManipulator = (function () {
 	let createDivElement = () => document.createElement("div");
@@ -74,7 +74,7 @@ let weatherAppDomManipulator = (function () {
 
 	let stopClock = function () {
 		clearInterval(clock);
-		clock = null
+		clock = null;
 	};
 
 	let changeBackground = function (newImage) {
@@ -153,7 +153,7 @@ function getTime() {
 }
 
 let createSettingsPanel = async function () {
-	weatherAppDomManipulator.stopClock()
+	weatherAppDomManipulator.stopClock();
 
 	let screen = document.querySelector("#main-container");
 	screen.textContent = "";
@@ -168,7 +168,7 @@ let createSettingsPanel = async function () {
 	cityInputDiv.textContent =
 		"Default city: (City that shows on the main display)";
 	let cityInput = document.createElement("input");
-	cityInputDiv.append(cityInput)
+	cityInputDiv.append(cityInput);
 
 	let unitInputDiv = document.createElement("div");
 	unitInputDiv.textContent = "Unit:";
@@ -176,7 +176,7 @@ let createSettingsPanel = async function () {
 	unitInput.innerHTML = `
 	<option value="metric">Metric</option>
 	<option value="imperial">Imperial</option>`;
-	unitInputDiv.append(unitInput)
+	unitInputDiv.append(unitInput);
 
 	settingsContainer.append(title, cityInputDiv, unitInputDiv);
 
