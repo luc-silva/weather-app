@@ -15,9 +15,16 @@ let weatherAppDomManipulator = (function () {
 
 		let searchInpt = createInptElement();
 		searchInpt.placeholder = "Type a city here...";
+		searchInpt.id = "search-input";
 
 		let searchBtn = createBtnElement();
+		searchBtn.addEventListener("click", () => {
+			console.log(searchInpt.value);
+			fetchCity(searchInpt.value);
+		});
 		searchBtn.textContent = "Search";
+		searchBtn.id = "search-btn";
+
 		searchContainer.append(searchInpt, searchBtn);
 
 		//
@@ -69,14 +76,62 @@ let weatherAppDomManipulator = (function () {
 		image.style.backgroundImage = `url(${newImage})`;
 	};
 
+	let createCityContainer = function (data) {
+		let screen = document.querySelector("#weather-card-container");
+		let container = createDivElement();
+		container.id = "weather-city-container-card";
+
+		let weatherInfo = createDivElement();
+		weatherInfo.id = "weather-city-container-info";
+
+		let weatherTitle = createDivElement();
+		weatherTitle.innerHTML = `
+		<div>
+			<h2>${data.name} - ${data.sys.country}</h2>
+			<p>${data.weather[0].description}</p>
+		</div>`;
+
+		let weatherStatus = createDivElement();
+		weatherStatus.id = "weather-city-container-info-stts";
+		weatherStatus.innerHTML = `
+		<span><strong>Humidity: </strong>${data.main.humidity}%</span>
+		<span><strong>Temp Min: </strong>${data.main.temp_min}°C</span>
+		<span><strong>Temp Max: </strong>${data.main.temp_max}°C</span>`;
+
+		weatherInfo.append(weatherTitle, weatherStatus);
+		//
+
+		let weatherImg = createDivElement();
+		weatherImg.id = "weather-city-container-img";
+		weatherImg.innerHTML = `
+		<h3>${data.main.temp}°C</h3>
+		<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">`;
+
+		container.append(weatherInfo, weatherImg);
+
+		if (screen.firstChild.id != "weather-city-container-card") {
+			screen.prepend(container);
+		} else {
+			let children = screen.querySelectorAll("div");
+			screen.removeChild(children[0]);
+			screen.prepend(container);
+		}
+	};
+
 	return {
 		createSearchContainer,
 		changeBackground,
 		updateClock,
 		createWeatherCardContainer,
 		createWeatherCard,
+		createCityContainer,
 	};
 })();
+
+let fetchCity = async function (city) {
+	let data = await getData(city);
+	weatherAppDomManipulator.createCityContainer(data);
+};
 
 function getTime() {
 	let time = new Date();

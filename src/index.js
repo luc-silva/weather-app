@@ -1,4 +1,4 @@
-import getData from "./modules/fetch.js"
+import getData from "./modules/fetch.js";
 import {
 	createWeatherPanel,
 	weatherAppDomManipulator,
@@ -87,9 +87,10 @@ let weatherApp = (async function () {
 
 	//panel buttons
 	let settingsBtn = document.querySelector("#settings-button");
+	settingsBtn.addEventListener("click", createSettingsPanel);
 
 	let weatherBtn = document.querySelector("#weather-tab-btn");
-	weatherBtn.addEventListener("click",createWeatherPanel);
+	weatherBtn.addEventListener("click", createWeatherPanel);
 
 	weatherTemperature.addEventListener("click", showTemperature);
 	showTemperature();
