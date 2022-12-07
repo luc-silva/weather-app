@@ -1,6 +1,7 @@
 import getData from "./modules/fetch.js";
 import {
 	createWeatherPanel,
+	createSettingsPanel,
 	weatherAppDomManipulator,
 } from "./modules/dom-manipulator.js";
 

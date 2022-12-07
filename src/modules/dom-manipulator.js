@@ -67,8 +67,14 @@ let weatherAppDomManipulator = (function () {
 		return card;
 	};
 
+	let clock;
 	let updateClock = function () {
-		setInterval(getTime, 3000);
+		clock = setInterval(getTime, 3000);
+	};
+
+	let stopClock = function () {
+		clearInterval(clock);
+		clock = null
 	};
 
 	let changeBackground = function (newImage) {
@@ -122,6 +128,7 @@ let weatherAppDomManipulator = (function () {
 		createSearchContainer,
 		changeBackground,
 		updateClock,
+		stopClock,
 		createWeatherCardContainer,
 		createWeatherCard,
 		createCityContainer,
@@ -144,6 +151,37 @@ function getTime() {
 
 	clock.textContent = `${hours}:${minutes}`;
 }
+
+let createSettingsPanel = async function () {
+	weatherAppDomManipulator.stopClock()
+
+	let screen = document.querySelector("#main-container");
+	screen.textContent = "";
+
+	let settingsContainer = document.createElement("div");
+	settingsContainer.id = "settings-container";
+
+	let title = document.createElement("h2");
+	title.textContent = "Settings:";
+
+	let cityInputDiv = document.createElement("div");
+	cityInputDiv.textContent =
+		"Default city: (City that shows on the main display)";
+	let cityInput = document.createElement("input");
+	cityInputDiv.append(cityInput)
+
+	let unitInputDiv = document.createElement("div");
+	unitInputDiv.textContent = "Unit:";
+	let unitInput = document.createElement("select");
+	unitInput.innerHTML = `
+	<option value="metric">Metric</option>
+	<option value="imperial">Imperial</option>`;
+	unitInputDiv.append(unitInput)
+
+	settingsContainer.append(title, cityInputDiv, unitInputDiv);
+
+	screen.append(settingsContainer);
+};
 
 let createWeatherPanel = async function () {
 	let screen = document.querySelector("#main-container");
@@ -175,4 +213,4 @@ let createWeatherPanel = async function () {
 	}
 };
 
-export { createWeatherPanel, weatherAppDomManipulator };
+export { createWeatherPanel, createSettingsPanel, weatherAppDomManipulator };

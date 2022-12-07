@@ -9,4 +9,5 @@ async function getData(city = "London", unit = "metric") {
 		throw new Error(`Wasn't possible to fetch data from API. ${error}`);
 	}
 }
+
 export default getData;
