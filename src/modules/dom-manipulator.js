@@ -1,4 +1,4 @@
-import { getData } from "./fetch.js";
+import { getData, settings } from "./fetch.js";
 
 let weatherAppDomManipulator = (function () {
 	let createDivElement = () => document.createElement("div");
@@ -168,17 +168,30 @@ let createSettingsPanel = async function () {
 	cityInputDiv.textContent =
 		"Default city: (City that shows on the main display)";
 	let cityInput = document.createElement("input");
+	cityInput.id = "default-city-input";
+	cityInput.value = settings.city;
 	cityInputDiv.append(cityInput);
 
 	let unitInputDiv = document.createElement("div");
 	unitInputDiv.textContent = "Unit:";
+
 	let unitInput = document.createElement("select");
+	unitInput.value = settings.temperatureUnit;
+	unitInput.id = "default-unit-input";
 	unitInput.innerHTML = `
 	<option value="metric">Metric</option>
 	<option value="imperial">Imperial</option>`;
 	unitInputDiv.append(unitInput);
 
-	settingsContainer.append(title, cityInputDiv, unitInputDiv);
+	let submitButton = document.createElement("button");
+	submitButton.id = "settings-submit";
+	submitButton.textContent = "Submit Changes";
+	submitButton.addEventListener("click", () => {
+		settings.city = cityInput.value;
+		settings.temperatureUnit = unitInput.value;
+	});
+
+	settingsContainer.append(title, cityInputDiv, unitInputDiv, submitButton);
 
 	screen.append(settingsContainer);
 };

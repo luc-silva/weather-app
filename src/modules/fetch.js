@@ -9,7 +9,7 @@ async function getData(city = "London", unit = "metric") {
 		throw new Error(`Wasn't possible to fetch data from API. ${error}`);
 	}
 }
-let settings = (async function () {
+let settings = ( function () {
 	let temperatureUnit = "metric";
 	let city = "London";
 
