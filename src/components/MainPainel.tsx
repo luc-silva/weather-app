@@ -1,10 +1,17 @@
 import React, { Component } from "react";
+import getData from "../scripts/fetch";
 
 class MainPanel extends Component {
     constructor(props: object) {
         super(props);
     }
+    async getWeatherStatus(){
+        let data:Object = await getData()
+        return data
+    }
+
     render() {
+        console.log(this.getWeatherStatus())
         return (
             <div id="weather-app-image">
                 <span id="weather-tip">

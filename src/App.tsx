@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AppNavigator from "./components/AppNavigator";
+import MainBody from "./components/MainBody";
 import MainPanel from "./components/MainPainel";
 
 class App extends Component {
@@ -11,7 +12,8 @@ class App extends Component {
         return ( 
             <div>
                 <MainPanel />
-                <AppNavigator />
+                {/* <AppNavigator />
+                <MainBody /> */}
             </div>
         )
     }
