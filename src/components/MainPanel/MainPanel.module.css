@@ -1,0 +1,25 @@
+.weather-app-image{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 90vh;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    background-color: black;
+    box-sizing: border-box;
+}
+.weather-tip{
+    margin-top: 1rem;
+    animation: info 5s infinite;
+    cursor: default;
+}
+.weather-tip, .weather-display{
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.359);
+}

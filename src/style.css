@@ -1,23 +1,24 @@
-*{
+* {
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     list-style: none;
     text-decoration: none;
 }
-input, button{
+input,
+button {
     border: none;
     background-color: white;
 }
-input:focus{
+input:focus {
     outline: none;
 }
 
-body{
-    padding: 0 8rem ;
+body {
+    padding: 0 8rem;
     overflow-y: scroll;
 }
-img{
+img {
     width: 3rem;
     height: 3rem;
     text-shadow: 1px 1px 1px black;
@@ -32,106 +33,24 @@ img{
         color: rgba(255, 255, 255, 0.887);
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.359);
     }
-    100%{
+    100% {
         color: rgba(255, 255, 255, 0);
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0);
     }
-  }
-  @keyframes fade-in{
-    0%{
+}
+@keyframes fade-in {
+    0% {
         opacity: 0;
     }
-    100%{
+    100% {
         opacity: 1;
     }
-
-  }
-
-#weather-app-image{
-    display: flex;
-    flex-direction: column;
-
-    justify-content: space-between;
-    align-items: center;
-
-    width: 100%;
-    height: 90vh;
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    background-color: black;
-    box-sizing: border-box;
-}
-#weather-tip{
-    margin-top: 1rem;
-    animation: info 5s infinite;
-    cursor: default;
-}
-#weather-tip, #weather-display{
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.359);
 }
 
-
-#weather-display{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-
-    align-self: flex-end;
-    margin: 3rem;
-}
-#weather-city{
-    line-height: 0;
-}
-#weather-status-display{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-}
-#weather-temperature, #weather-city, #weather-status, #updated-dialog{
-    color: white;
-}
-#weather-status{
-    font-size: 1.4rem;
-}
-#weather-temperature{
-    font-size: 4rem;
-    font-weight: bold;
-}
-#weather-app-navigator{
+#clock-search-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    height: 10vh;
-    padding: 1rem;
-    border-bottom: 1px solid rgb(197, 196, 196);
-    box-sizing: border-box;
-}
-#weather-app-navigator > ul{
-    display: flex;
-    flex-direction: row;
-    gap: 3rem;
-}
-#weather-app-navigator > ul > li, #settings-button{
-    font-size: 1.2rem;
-    color: rgb(55, 55, 55);
-    height: 5vh;
-    cursor: pointer;
-}
-#settings-button{
-    background-color: white;
-    font-weight: bold;
-    outline: none;
-    border: none;
-}
-#clock-search-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between ;
     align-items: center;
 
     width: 100%;
@@ -139,40 +58,35 @@ img{
     box-sizing: border-box;
     box-shadow: 0px 4px 5px -5px rgb(0 0 0 / 25%);
 }
-#search-container{
-
+#search-container {
     display: flex;
     gap: 2rem;
     width: 80%;
 }
-#search-container > input{
+#search-container > input {
     width: 60%;
     padding: 0.5rem;
     background-color: whitesmoke;
-
 }
-#search-container > button{
+#search-container > button {
     padding-left: 1rem;
     padding-right: 1rem;
     background-color: whitesmoke;
 }
-#weather-clock{
+#weather-clock {
     font-size: 1.4rem;
 }
 
-#main-container{
-    color:rgb(55, 55, 55);
-}
-#weather-cards-container{
+#weather-cards-container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     width: 100%;
 }
-.weather-card:hover{
+.weather-card:hover {
     background-color: whitesmoke;
 }
-.weather-card{
+.weather-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -186,17 +100,17 @@ img{
     animation-name: fade-in;
     animation-duration: 0.8s;
 }
-.weather-card-status-container{
+.weather-card-status-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 40%;
 }
-.weather-card-condition{
+.weather-card-condition {
     display: flex;
     align-items: center;
 }
-.weather-card-status{
+.weather-card-status {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -205,10 +119,10 @@ img{
     color: black;
     font-weight: bold;
 }
-.weather-card-city{
+.weather-card-city {
     color: rgb(57, 57, 57);
 }
-#weather-city-container-card{
+#weather-city-container-card {
     display: flex;
     flex-direction: row;
 
@@ -223,38 +137,38 @@ img{
     animation-name: fade-in;
     animation-duration: 0.8s;
 }
-#weather-city-container-info{
+#weather-city-container-info {
     display: flex;
     flex-direction: column;
 
     width: 55%;
     font-size: 1.2rem;
 }
-#weather-city-container-info-stts{
+#weather-city-container-info-stts {
     display: flex;
     flex-direction: column;
     font-size: 1.1rem;
     margin-top: 3rem;
 }
-#weather-city-container-info > h2{
+#weather-city-container-info > h2 {
     font-size: 1.3rem;
 }
-#weather-city-container-img{
+#weather-city-container-img {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 45%;
 }
-#weather-city-container-img > img{
+#weather-city-container-img > img {
     width: 12rem;
     height: 12rem;
     filter: none;
 }
-#weather-city-container-img > h3{
+#weather-city-container-img > h3 {
     font-size: 3rem;
 }
 
-#settings-container{
+#settings-container {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -264,12 +178,13 @@ img{
     gap: 1.5rem;
     margin: 2rem 0;
 }
-#settings-container > div{
+#settings-container > div {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
-#settings-container > div > input, #settings-container > div > select{
+#settings-container > div > input,
+#settings-container > div > select {
     padding: 5px;
     font-size: 1.3rem;
     width: 50%;
@@ -277,6 +192,6 @@ img{
     background-color: whitesmoke;
     border: none;
 }
-select:focus{
+select:focus {
     outline: none;
 }

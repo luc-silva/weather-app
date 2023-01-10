@@ -1,0 +1,27 @@
+.weather-display{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    align-self: flex-end;
+    margin: 3rem;
+}
+.weather-city{
+    line-height: 0;
+}
+.weather-status-display{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.weather-temperature, .weather-city, .weather-status, .updated-dialog{
+    color: white;
+}
+.weather-status{
+    font-size: 1.4rem;
+}
+.weather-temperature{
+    font-size: 4rem;
+    font-weight: bold;
+}

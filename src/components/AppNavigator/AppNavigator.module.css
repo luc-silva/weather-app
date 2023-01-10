@@ -1,0 +1,27 @@
+.weather-app-navigator{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    height: 10vh;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(197, 196, 196);
+    box-sizing: border-box;
+}
+.weather-app-navigator > ul{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+.weather-app-navigator > ul > li, .settings-button{
+    font-size: 1.2rem;
+    color: rgb(55, 55, 55);
+    height: 5vh;
+    cursor: pointer;
+}
+.settings-button{
+    background-color: white;
+    font-weight: bold;
+    outline: none;
+    border: none;
+}
