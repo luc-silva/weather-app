@@ -5,7 +5,7 @@
     "private": true,
     "scripts": {
         "dev": "webpack serve",
-        "build": "webpack --mode production --progress"
+        "build": "tsc && webpack --mode production --progress"
     },
     "author": "Lucas Silva",
     "license": "ISC",

@@ -1,6 +1,4 @@
 node_modules
 *.jpg
-main.js
-App.js
-Index.js
-main.js.LICENSE.txt
+*.js
+*.txt
