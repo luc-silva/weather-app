@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 
+import styles from "./AppNavigator.module.css"
+
 class AppNavigator extends Component {
-    constructor(props: object) {
-        super(props);
-    }
     render() {
         return (
-            <nav id="weather-app-navigator">
+            <nav className={styles['weather-app-navigator']}>
                 <ul>
-                    <li id="weather-tab-btn">Weather</li>
+                    <li className={styles['weather-app-navigator']}>Weather</li>
                     <li>News</li>
                     <li>Agenda</li>
                 </ul>
-                <button id="settings-button">Settings</button>
+                <button id={styles['settings-button']}>Settings</button>
             </nav>
         );
     }

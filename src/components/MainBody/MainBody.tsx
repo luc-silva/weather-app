@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 
+import styles from "./MainBody.module.css"
+
 class MainBody extends Component {
-    constructor(props: object) {
-        super(props);
-    }
     render(){
         return (
-            <div id="main-container">
+            <div className={styles['main-container']}>
                 
             </div>
         )
