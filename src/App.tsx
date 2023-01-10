@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import AppNavigator from "./components/AppNavigator";
-import MainBody from "./components/MainBody";
-import MainPanel from "./components/MainPainel";
+import AppNavigator from "./components/AppNavigator/AppNavigator";
+import MainBody from "./components/MainBody/MainBody";
+import MainPanel from "./components/MainPanel/MainPanel";
 
 class App extends Component {
     constructor(props: object) {

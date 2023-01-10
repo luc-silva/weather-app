@@ -1,8 +1,8 @@
 let settings = (function () {
     let temperatureUnit = "metric";
-    let city = "London";
+    let currentCity = "London";
 
-    return { temperatureUnit, city };
+    return { temperatureUnit, currentCity};
 })();
 
 export default settings;
